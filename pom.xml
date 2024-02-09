@@ -21,6 +21,7 @@
         <module>file-storage</module>
         <module>streaming-service</module>
         <module>upload-service</module>
+        <module>final</module>
     </modules>
 
 </project>
