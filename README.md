@@ -21,7 +21,7 @@ Docker is an open-source containerization platform. It enables developers to pac
 
 ## Problem Statement
 
-We have been assigned by Dr. Motasem Aldiab to build a containerized Video Streaming System, where the user can upload and watch videos as a stream while authenticated. We have to use Docker Compose after containerizing our services.
+Build a containerized Video Streaming System, where the user can upload and watch videos as a stream while authenticated. We have to use Docker Compose after containerizing our services.
 
 ## My Approach
 
@@ -68,4 +68,4 @@ After creating the docker-compose yml file and having the images(“have pushed 
 
 ## Conclusion
 
-It was a very big and interesting journey for me, learning and actually using advanced technology and for the first time being so close to the deployment stage. This project allowed me to appreciate the power of Docker in creating loosely coupled systems and has opened my mind to the possibilities of simplifying complex systems through containerization. A heartfelt thank you to Atypon, Dr. Motasem, and Dr. Fahed for their guidance and support throughout this journey.
+This project successfully demonstrates the power of containerization with Docker in building a scalable, modular video streaming platform. Utilizing a microservices architecture, each service is meticulously designed to perform its function, from user authentication to video streaming, ensuring high availability and efficient resource utilization. The use of Docker Compose simplifies deployment and scalability challenges, showcasing an elegant solution for managing complex applications with multiple interdependent services. Through this implementation, the project highlights the effectiveness of modern DevOps practices in creating robust, deployable applications capable of handling real-world demands.
