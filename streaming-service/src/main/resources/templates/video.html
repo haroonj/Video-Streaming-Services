@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Streaming</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto Light", sans-serif;
+        }
+
+        body {
+            background: #1e1f22;
+        }
+
+        .heading {
+            color: #ffffff;
+            font-size: 35px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 15px;
+            align-items: flex-start;
+            padding: 5px 5%;
+        }
+
+        .main-video,
+        .video-list {
+            background: #292b2e;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .main-video video {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .main-video .title {
+            color: #ffffff;
+            font-size: 34px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        .video-list {
+            height: 520px;
+            overflow-y: scroll;
+        }
+
+        .video-list::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        .video-list::-webkit-scrollbar-track {
+            background: #373a3d;
+            border-radius: 50px;
+        }
+
+        .video-list::-webkit-scrollbar-thumb {
+            background: #5a5d61;
+            border-radius: 50px;
+        }
+
+        .video-list .vid {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #373a3d;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .video-list .vid:hover {
+            background: #494d50;
+        }
+
+        .video-list .vid.active {
+            background: #cc0100;
+            color: #282828;
+        }
+
+        .video-list .vid .subtitle {
+            font-size: 20px;
+            font-weight: bold;
+            color: #eaeaea;
+        }
+        .main-video .title {
+            color: #ffffff;
+            font-size: 34px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        .video-details .description {
+            color: #cccccc;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .video-details .publisher {
+            color: #e8e8e8;
+            font-size: 20px;
+        }
+
+
+        @media (max-width: 1080px) {
+            .container {
+                grid-template-columns: 1.5fr 1fr;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 1280px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<header class="heading">
+    <h1>Video Streaming</h1>
+</header>
+
+<div class="container">
+    <section class="main-video">
+        <div class="video-preview">
+            <video width="999" height="562" th:src="${selected.getUrl()}" controls autoplay></video>
+        </div>
+        <div class="video-details">
+            <h2 class="title" th:text="${selected.getVidName()}">The Moons of Mars</h2>
+            <p class="description" th:text="${selected.getVidDescription()}">The Moons of Mars</p>
+            <p class="publisher" th:text="${selected.getPublisher()}">admin</p>
+        </div>
+    </section>
+
+    <section class="video-list">
+        <ul>
+            <li th:each="video : ${videos}">
+                <a th:href="@{/play/{vidName}(vidName=${video.getId()})}"
+                   th:class="${video.getId() == selected.getId() ? 'vid active' : 'vid'}">
+                    <div class="video-info">
+                        <h3 class="subtitle" th:text="${video.getVidName()}"></h3>
+                        <p class="description" th:text="${video.getVidDescription()}"></p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </section>
+</div>
+</body>
+</html>

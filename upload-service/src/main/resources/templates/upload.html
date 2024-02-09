@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+    <style>
+        body {
+            font-family: "Roboto Light", sans-serif;
+            background-color: #1e1f22;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+        }
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #upload-box {
+            background-color: #292b2e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            margin-top: 0;
+            color: #eeeeee;
+        }
+        form {
+            margin-top: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #cccccc;
+        }
+        input[type="text"],
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #c5c5c5;
+            color: #000000;
+        }
+        input[type="file"] {
+            padding: 5px;
+        }
+        button[type="submit"] {
+            background-color: #cc0100;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #b70201;
+        }
+        a {
+            color: #bb0302;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="upload-box">
+        <h2>Upload your video</h2>
+        <h2>
+            [[${message}]]
+        </h2>
+        <form action="uploadF" method="post" enctype="multipart/form-data">
+            <label for="name">Video Name:</label>
+            <input type="text" name="name" id="name" required/>
+
+            <label for="des">Video Description:</label>
+            <textarea name="des" id="des" rows="5" required></textarea>
+
+            <label for="file">Choose a video file:</label>
+            <input type="file" name="file" id="file" required/>
+
+            <button type="submit">Submit</button>
+        </form>
+        <br>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+</body>
+</html>
